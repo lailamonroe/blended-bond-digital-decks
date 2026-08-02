@@ -9,14 +9,14 @@
   "theme_color": "#39393b",
   "icons": [
     {
-      "src": "../../assets/symbols/element5.png",
-      "sizes": "any",
+      "src": "../../assets/app-icons/before-the-blend-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "../../assets/symbols/element5.png",
-      "sizes": "any",
+      "src": "../../assets/app-icons/before-the-blend-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
