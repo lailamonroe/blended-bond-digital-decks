@@ -872,22 +872,46 @@ body.theme-full-deck #next-steps .button-stack::before {
   content: "Copied";
 }
 .signature {
-  margin-top: 34px !important;
+  margin-top: 24px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
   text-align: right;
+  transform: translateX(24px);
+}
+.signature::before {
+  content: "-";
+  font-family: var(--body-font);
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-right: -40px;
+  position: relative;
+  z-index: 1;
 }
 .signature img {
   display: inline-block;
-  width: min(46vw, 168px);
-  height: 74px;
-  object-fit: contain;
+  width: min(76vw, 330px);
+  height: 142px;
+  object-fit: cover;
   object-position: center;
   filter: brightness(0) saturate(100%) invert(22%) sepia(10%) saturate(666%) hue-rotate(57deg) brightness(88%) contrast(86%);
+}
+body.theme-mini-guide .signature::before {
+  color: var(--green-deep);
 }
 body.theme-mini-guide .signature img {
   filter: brightness(0) saturate(100%) invert(21%) sepia(10%) saturate(760%) hue-rotate(57deg) brightness(84%) contrast(88%);
 }
+body.theme-before-the-blend .signature::before {
+  color: var(--accent-red);
+}
 body.theme-before-the-blend .signature img {
   filter: brightness(0) saturate(100%) invert(28%) sepia(16%) saturate(1074%) hue-rotate(309deg) brightness(86%) contrast(85%);
+}
+body.theme-full-deck .signature::before {
+  color: var(--green);
 }
 body.theme-full-deck .signature img {
   filter: brightness(0) saturate(100%) invert(39%) sepia(75%) saturate(512%) hue-rotate(102deg) brightness(86%) contrast(91%);
