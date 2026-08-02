@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#258c52" />
+  <meta name="description" content="Access your Blended Bond digital deck." />
+  <title>Blended Bond | Digital Deck Access</title>
+  <link rel="stylesheet" href="styles.css?v=entry-cleanup-1" />
+  <script src="access.js?v=entry-cleanup-1" defer></script>
+</head>
+<body>
+  <main>
+    <section class="screen entry-screen is-active" id="entry-screen" aria-labelledby="entry-title">
+      <div class="entry-content">
+        <p class="eyebrow">Welcome to</p>
+        <h1 class="visually-hidden" id="entry-title">Blended Bond</h1>
+        <img class="entry-logo" src="assets/navigation/Blended_Bond_Logo-02.png" alt="Blended Bond" />
+        <p class="entry-copy">Enter the password provided with your purchase to open your digital deck.</p>
+
+        <form class="password-form" id="password-form" novalidate>
+          <label class="visually-hidden" for="password-input">Deck password</label>
+          <input
+            id="password-input"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+            required
+          />
+          <button class="visually-hidden" type="submit">Open digital deck</button>
+          <p class="form-message" id="password-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="entry-reminder">
+          <p class="reminder-title">
+            <img src="assets/symbols/Element 285.png" alt="" aria-hidden="true" />
+            <span>Keep your deck close</span>
+            <img src="assets/symbols/Element 285.png" alt="" aria-hidden="true" />
+          </p>
+          <p>Bookmark this page<br />or add it to your Home Screen<br />for easy access anywhere, anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen loading-screen" id="loading-screen" aria-label="Loading your digital deck">
+      <div class="loading-carousel" aria-hidden="true">
+        <img src="assets/symbols/Element 329.png" alt="" />
+        <img src="assets/symbols/element5.png" alt="" />
+        <img src="assets/symbols/Element 316.png" alt="" />
+      </div>
+      <p>Opening your deck</p>
+    </section>
+  </main>
+</body>
+</html>

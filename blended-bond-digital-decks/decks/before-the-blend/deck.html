@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#258c52" />
+  <meta name="description" content="Explore the Blended Bond swipeable prompt card deck." />
+  <title>Blended Bond | Explore the Deck</title>
+  <link rel="stylesheet" href="../../styles.css?v=brand-cleanup-41" />
+  <script src="../../deck-configs.js?v=brand-cleanup-41"></script>
+  <script src="../../script.js?v=brand-cleanup-41" defer></script>
+</head>
+<body class="theme-before-the-blend">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="app-shell" id="app-shell">
+    <header class="site-header">
+      <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="header-logo" href="index.html" aria-label="Blended Bond home"><img src="../../assets/navigation/Blended_Bond_Logo-01.png" alt="Blended Bond" /></a>
+      <button class="icon-button saved-shortcut" type="button" data-route="saved" aria-label="Open saved prompts"></button>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay" hidden></div>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation" aria-hidden="true">
+      <div class="nav-top">
+        <p class="nav-logo"><img src="../../assets/navigation/Blended_Bond_Logo-01.png" alt="Blended Bond" /></p>
+        <button class="icon-button close-menu" id="close-menu" type="button" aria-label="Close navigation">&times;</button>
+      </div>
+      <div class="nav-links">
+        <button type="button" data-route="welcome">Homepage</button>
+        <button type="button" data-route="deck">Explore the deck</button>
+        <button type="button" data-route="how-to">How to use</button>
+        <button type="button" data-route="prompts">Understanding symbols</button>
+        <button type="button" data-route="saved">Saved cards <span id="nav-saved-count">(0)</span></button>
+        <button type="button" data-route="next-steps">Next steps</button>
+        <button type="button" data-url="../../index.html">Password page</button>
+      </div>
+      <div class="nav-external">
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="#" target="_blank" rel="noreferrer">Visit website</a>
+      </div>
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+      <section class="page page-pattern is-current" id="deck" aria-labelledby="deck-title">
+        <div class="deck-page-inner">
+          <h2 class="deck-view-title" id="deck-title"></h2>
+          <div class="filter-row deck-filter-row" id="deck-filters" aria-label="Card categories"></div>
+          <div class="deck-stack" aria-live="polite">
+            <div class="deck-under-card deck-under-card-one" aria-hidden="true"></div>
+            <div class="deck-under-card deck-under-card-two" aria-hidden="true"></div>
+            <article class="prompt-card" id="prompt-card" tabindex="0">
+              <img class="card-image" id="card-image" alt="" draggable="false" loading="eager" decoding="async" fetchpriority="high" hidden />
+              <div class="card-fallback" id="card-fallback">
+                <p class="card-category" id="card-category"></p>
+                <p class="card-question" id="card-question"></p>
+                <p class="card-symbol" id="card-symbol" aria-hidden="true"></p>
+              </div>
+            </article>
+          </div>
+
+          <p class="interaction-note">Swipe cards or tap buttons</p>
+          <div class="deck-controls" aria-label="Deck controls">
+            <button class="circle-button image-button" id="skip-card" type="button" aria-label="Skip to next prompt"><img src="../../assets/symbols/Element 277.png" alt="" aria-hidden="true" /></button>
+            <button class="circle-button" id="save-card" type="button" aria-label="Save this prompt" aria-pressed="false">&#9734;</button>
+            <button class="circle-button" id="shuffle-card" type="button" aria-label="Shuffle prompts">&#8644;</button>
+          </div>
+          <p class="deck-progress" id="deck-progress"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">&copy; 2026 Blended Bond | All rights reserved</footer>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
