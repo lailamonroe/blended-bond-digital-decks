@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#258c52" />
   <meta name="description" content="Access your Blended Bond digital deck." />
   <title>Blended Bond | Digital Deck Access</title>
-  <link rel="stylesheet" href="styles.css?v=entry-cleanup-3" />
+  <link rel="stylesheet" href="styles.css?v=entry-cleanup-4" />
   <style>
     .loading-carousel {
       width: 188px;
@@ -14,7 +14,7 @@
     }
 
     .loading-carousel img {
-      opacity: .2;
+      opacity: 0;
       transform: scale(.84) rotate(-8deg);
       animation-name: loadingCarouselVisible;
     }
@@ -39,23 +39,18 @@
     }
 
     @keyframes loadingCarouselVisible {
-      0%, 100% {
-        opacity: .2;
-        transform: scale(.84) rotate(-8deg);
-      }
-
-      12%, 34% {
+      0%, 30% {
         opacity: 1;
         transform: scale(1.04) rotate(0deg);
       }
 
-      50%, 88% {
-        opacity: .2;
+      34%, 100% {
+        opacity: 0;
         transform: scale(.84) rotate(8deg);
       }
     }
   </style>
-  <script src="access.js?v=entry-cleanup-3" defer></script>
+  <script src="access.js?v=entry-cleanup-4" defer></script>
 </head>
 <body>
   <main>
