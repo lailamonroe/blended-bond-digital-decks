@@ -19,8 +19,11 @@ const form = document.getElementById("password-form");
 const input = document.getElementById("password-input");
 const message = document.getElementById("password-message");
 const toggle = document.getElementById("password-toggle");
+const submitButton = document.getElementById("open-deck-button");
 const entryScreen = document.getElementById("entry-screen");
 const loadingScreen = document.getElementById("loading-screen");
+
+let isOpeningDeck = false;
 
 function normalizePassword(value) {
   return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -35,6 +38,7 @@ function setMessage(text, type = "") {
 
 form?.addEventListener("submit", event => {
   event.preventDefault();
+  if (isOpeningDeck) return;
 
   const submitted = normalizePassword(input.value);
   const match = deckAccess.find(deck => normalizePassword(deck.password) === submitted);
@@ -52,6 +56,12 @@ form?.addEventListener("submit", event => {
   }
 
   setMessage("Opening your deck.", "success");
+  isOpeningDeck = true;
+  if (submitButton) {
+    submitButton.textContent = "OPENING...";
+    submitButton.disabled = true;
+    submitButton.setAttribute("aria-busy", "true");
+  }
   entryScreen?.classList.remove("is-active");
   loadingScreen?.classList.add("is-active");
   window.setTimeout(() => {

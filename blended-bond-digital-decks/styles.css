@@ -129,12 +129,13 @@ b, strong { font-weight: var(--bold-weight); }
 .entry-screen {
   background: var(--cream);
   align-items: stretch;
+  padding: max(18px, calc(env(safe-area-inset-top) + 14px)) 24px max(28px, env(safe-area-inset-bottom));
 }
 .entry-content {
   width: min(100%, 340px);
-  min-height: calc(100dvh - 72px);
+  min-height: calc(100dvh - max(46px, calc(env(safe-area-inset-top) + 42px)) - max(28px, env(safe-area-inset-bottom)));
   display: grid;
-  grid-template-rows: minmax(84px, 1fr) auto auto auto minmax(72px, 1fr);
+  grid-template-rows: minmax(16px, .36fr) auto auto auto minmax(56px, 1fr);
   align-content: stretch;
   text-align: center;
 }
@@ -1086,6 +1087,24 @@ body.theme-before-the-blend #next-steps .next-cta-copy {
 .button-light { background: var(--sage); color: var(--green-deep); }
 .button-soft { background: var(--sage); color: var(--green-deep); border-color: rgba(71,81,64,.45); }
 .button-dark { background: var(--green-deep); color: white; }
+.password-form .entry-submit-button {
+  min-height: 60px;
+  border-radius: 9px;
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+  box-shadow: 0 10px 22px rgba(37,140,82,.16);
+}
+.password-form .entry-submit-button:hover,
+.password-form .entry-submit-button:focus-visible {
+  background: var(--green-deep);
+  border-color: var(--green-deep);
+}
+.password-form .entry-submit-button:disabled {
+  cursor: wait;
+  opacity: .72;
+  transform: none;
+}
 #next-steps > .page-inner > .button-soft {
   margin-bottom: 26px;
 }
