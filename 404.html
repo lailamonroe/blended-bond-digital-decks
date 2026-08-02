@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Blended Bond | Redirecting</title>
+  <script>
+    (function redirectToSiteFolder() {
+      var repoBase = "/blended-bond-digital-decks/";
+      var siteFolder = "blended-bond-digital-decks/";
+      var path = window.location.pathname;
+
+      if (path.indexOf(repoBase + siteFolder) === 0) {
+        window.location.replace(repoBase + siteFolder);
+        return;
+      }
+
+      var rest = path.indexOf(repoBase) === 0 ? path.slice(repoBase.length) : "";
+      window.location.replace(repoBase + siteFolder + rest + window.location.search + window.location.hash);
+    })();
+  </script>
+</head>
+<body>
+  <p><a href="/blended-bond-digital-decks/blended-bond-digital-decks/">Open Blended Bond digital decks</a></p>
+</body>
+</html>
