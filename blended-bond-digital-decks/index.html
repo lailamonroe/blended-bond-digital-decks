@@ -6,8 +6,65 @@
   <meta name="theme-color" content="#258c52" />
   <meta name="description" content="Access your Blended Bond digital deck." />
   <title>Blended Bond | Digital Deck Access</title>
-  <link rel="stylesheet" href="styles.css?v=entry-cleanup-1" />
-  <script src="access.js?v=entry-cleanup-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=entry-cleanup-2" />
+  <style>
+    .loading-carousel {
+      width: 188px;
+      height: 188px;
+      filter: drop-shadow(0 16px 28px rgba(0, 0, 0, .14));
+    }
+
+    .loading-carousel::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .loading-carousel img {
+      opacity: .2;
+      transform: scale(.84) rotate(-8deg);
+      animation-name: loadingCarouselVisible;
+    }
+
+    .loading-carousel img:nth-child(2) {
+      transform: scale(.84) rotate(8deg);
+    }
+
+    .loading-carousel img:nth-child(3) {
+      transform: scale(.84) rotate(-2deg);
+    }
+
+    .loading-screen p {
+      display: block;
+      align-self: end;
+      margin: 240px 0 0;
+      color: rgba(255, 255, 255, .86);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    @keyframes loadingCarouselVisible {
+      0%, 100% {
+        opacity: .2;
+        transform: scale(.84) rotate(-8deg);
+      }
+
+      12%, 34% {
+        opacity: 1;
+        transform: scale(1.04) rotate(0deg);
+      }
+
+      50%, 88% {
+        opacity: .2;
+        transform: scale(.84) rotate(8deg);
+      }
+    }
+  </style>
+  <script src="access.js?v=entry-cleanup-2" defer></script>
 </head>
 <body>
   <main>
