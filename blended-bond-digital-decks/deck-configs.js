@@ -60,7 +60,6 @@
       storageKey: "blendedBondSavedPromptsDeck2",
       assetsBase: sharedAssetsBase,
       sharedAssetsBase,
-      shuffleCards: false,
       cardImageFiles: cardFiles("fulldeck", fullDeckNumbers),
       cardCategories: categoryMap([
         ["Start", [1]],
