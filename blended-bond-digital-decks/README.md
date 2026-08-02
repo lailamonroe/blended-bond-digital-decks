@@ -1,7 +1,3 @@
-# Blended Bond Digital Decks
-
-Mobile-first digital conversation decks for Blended Bond. The project is still a static website, but it is now organized so each deck shares the same structure, styling system, and JavaScript behavior.
-
 ## Current Flow
 
 1. Password entry
