@@ -1,0 +1,24 @@
+{
+  "name": "Mini Guide",
+  "short_name": "Mini Guide",
+  "description": "Explore the Blended Bond Mini Guide digital conversation deck.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5f2",
+  "theme_color": "#258c52",
+  "icons": [
+    {
+      "src": "../../assets/symbols/element7.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../../assets/symbols/element7.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

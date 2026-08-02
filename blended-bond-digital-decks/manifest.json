@@ -1,0 +1,24 @@
+{
+  "name": "Blended Bond Digital Decks",
+  "short_name": "Blended Bond",
+  "description": "Access and explore your Blended Bond digital conversation decks.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5f2",
+  "theme_color": "#258c52",
+  "icons": [
+    {
+      "src": "./assets/navigation/Blended_Bond_Logo-02.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/navigation/Blended_Bond_Logo-02.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
