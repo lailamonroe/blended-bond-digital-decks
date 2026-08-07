@@ -9,14 +9,14 @@
   "theme_color": "#258c52",
   "icons": [
     {
-      "src": "./assets/navigation/Blended_Bond_Logo-02.png",
-      "sizes": "any",
+      "src": "./assets/app-icons/password-page-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./assets/navigation/Blended_Bond_Logo-02.png",
-      "sizes": "any",
+      "src": "./assets/app-icons/password-page-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
