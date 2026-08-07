@@ -393,7 +393,7 @@ function renderCurrentCard() {
     cardFallback.hidden = false;
     syncSavedBadge(prompt);
     $("#card-category").textContent = "Saved";
-    $("#card-question").textContent = "No saved cards in this category yet.";
+    $("#card-question").textContent = "No saved prompts in this category yet.";
     $("#card-symbol").textContent = "";
     updateDeckControls();
     return;
@@ -519,7 +519,7 @@ function buildSavedCategoryHub() {
   const categoryRows = categoryDefinitions.map(category => {
     const count = savedPrompts.filter(prompt => prompt.category === category.name).length;
     return `
-      <button class="saved-category-button category-${category.slug}" type="button" data-saved-category="${category.name}" aria-label="Open ${category.name} saved cards">
+      <button class="saved-category-button category-${category.slug}" type="button" data-saved-category="${category.name}" aria-label="Open ${category.name} saved prompts">
         <span class="saved-category-symbol" aria-hidden="true">
           <img src="${category.icon}" alt="" />
         </span>
