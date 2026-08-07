@@ -1,64 +1,171 @@
-## Current Flow
+# Blended Bond Digital Decks
 
-1. Password entry
-2. Loading screen
-3. Welcome page
-4. How to use
-5. Understanding symbols
-6. Explore the deck
-7. Saved prompts
-8. Next steps
-9. Global slide-out navigation
+This project is a static, mobile-first digital deck experience for Blended Bond products. It includes a password entry page, individual deck homepages, swipeable prompt decks, symbol explanations, saved prompts, and next-step calls to action.
 
-## Project Structure
+The current build is intentionally simple: plain HTML, CSS, and JavaScript. It can be hosted as static files, but the structure is close enough to an app that it can be handed off later for a full digital application.
+
+## Current User Flow
+
+1. User opens the root password page.
+2. User enters a deck password.
+3. A branded loading screen appears.
+4. User lands on the selected deck homepage.
+5. User can read how to use the deck, review symbol meanings, swipe through prompts, save prompts, revisit saved prompts, and view next steps.
+
+## Design Summary
+
+The site is designed to feel like a calm, branded digital companion to the physical Blended Bond deck. The experience should stay simple, warm, and easy to use on a phone.
+
+Core design rules:
+
+- Mobile-first layout with desktop support.
+- Shared header, footer, slide-out navigation, and page structure across all decks.
+- Deck-specific colors and logos through CSS theme classes.
+- Swipe language for digital use, not physical "pull a card" language.
+- "Prompts" is the preferred user-facing word for saved items and interactions.
+- "Card" is still used internally for visual elements and image assets.
+- Home Screen save instructions are short and phone-friendly.
+- Background symbols should support the brand without overlapping text or controls.
+
+## File Map
 
 ```text
 blended-bond-digital-decks/
-  index.html                 Root password page
-  access.js                  Password routing behavior
-  styles.css                 Global brand system and all deck styling
-  script.js                  Shared deck behavior
-  deck-configs.js            Deck data: card files, categories, symbols, order
+  index.html
+  access.js
+  styles.css
+  script.js
+  deck-configs.js
+  manifest.json
+  README.md
   assets/
-    cards/                   Shared card PNGs
-    navigation/              Logos and CTA icons
-    symbols/                 Brand elements and category icons
   decks/
-    mini-guide/
-    full-deck/
-    before-the-blend/
 ```
 
-## Shared Deck Structure
+## Root Files
 
-Every deck folder uses the same six page files:
+`index.html`
+
+Root password entry page. It contains the welcome/password form, the short Home Screen reminder, and the loading screen markup.
+
+`access.js`
+
+Handles password matching and routes users to the correct deck folder. This is front-end only and should not be treated as secure access control.
+
+`styles.css`
+
+Global design system and all shared styling. This file controls layout, colors, typography, deck themes, navigation, loading screen, swipe deck UI, saved prompts, and responsive behavior.
+
+`script.js`
+
+Shared deck behavior. It handles routing between pages, menu behavior, prompt rendering, swipe gestures, save/unsave behavior, saved prompt lists, category filters, image preloading, and deck progress.
+
+`deck-configs.js`
+
+Source of truth for deck data. It defines card image order, category mapping, category descriptions, symbols, product names, storage keys, and deck-specific config.
+
+`manifest.json`
+
+Root web app manifest for install/app-like behavior. Each deck also has its own manifest.
+
+`README.md`
+
+Developer handoff and maintenance notes.
+
+## Asset Folders
+
+`assets/navigation/`
+
+Shared logo files and navigation/social icons.
+
+`assets/symbols/`
+
+Decorative brand symbols and category icons used across pages, loading screens, accordions, and backgrounds.
+
+`assets/app-icons/`
+
+Icons used by manifests and Home Screen/PWA-style installs.
+
+`assets/cards/`
+
+Main shared prompt card images:
 
 ```text
-index.html       Welcome page
-how-to.html      How to use page
-symbols.html     Understanding symbols page
-deck.html        Swipe/tap card deck page
-saved.html       Saved prompts page
-next-steps.html  Product and social CTA page
+assets/cards/miniguide/
+assets/cards/fulldeck/
+assets/cards/beforetheblend/
 ```
 
-Each page loads the same three shared files:
+`assets/signature.png`
+
+Ashley signature image used on welcome pages.
+
+## Deck Folder Structure
+
+Each deck folder uses the same page set:
+
+```text
+decks/{deck-name}/
+  index.html       Welcome page
+  how-to.html      How to use page
+  symbols.html     Understanding symbols page
+  deck.html        Swipeable prompt deck page
+  saved.html       Saved prompts page
+  next-steps.html  Product/social CTA page
+  manifest.json    Deck-specific web app manifest
+```
+
+Current decks:
+
+```text
+decks/mini-guide/
+decks/full-deck/
+decks/before-the-blend/
+```
+
+Each deck page loads the shared CSS and JS from the root:
 
 ```html
-<link rel="stylesheet" href="../../styles.css?v=brand-cleanup-41" />
-<script src="../../deck-configs.js?v=brand-cleanup-41"></script>
-<script src="../../script.js?v=brand-cleanup-41" defer></script>
+<link rel="stylesheet" href="../../styles.css?v=brand-cleanup-42" />
+<script src="../../deck-configs.js?v=brand-cleanup-42"></script>
+<script src="../../script.js?v=brand-cleanup-42" defer></script>
 ```
 
-This means most future deck work should happen in:
+When shared CSS or JS changes, update the version query string on deck pages so mobile browsers do not serve old cached files.
 
-- `deck-configs.js` for deck data
-- `styles.css` for brand colors and visual rules
-- The six deck HTML files only for page-specific copy
+## Deck Page Responsibilities
 
-## Brand System
+`index.html`
 
-Deck-specific colors are controlled by the body theme class:
+Deck welcome copy, Home Screen save instructions, and primary buttons.
+
+`how-to.html`
+
+Usage guidance and the symbol accordion container. The accordion content comes from `deck-configs.js`.
+
+`symbols.html`
+
+Dedicated symbol explanation page. Uses shared script/config behavior for category definitions.
+
+`deck.html`
+
+Swipeable prompt interface. Contains the prompt card container, category filters, swipe note, skip/save/mix controls, and progress text.
+
+`saved.html`
+
+Saved prompts hub. Shows saved categories, view-all-saved button, empty state, and saved prompt list container.
+
+`next-steps.html`
+
+Post-deck CTA copy and outbound links.
+
+`manifest.json`
+
+Deck-specific app name, short name, start URL, display mode, theme color, and icons.
+
+## Theme System
+
+Deck styling is controlled by body classes:
 
 ```html
 <body class="theme-mini-guide">
@@ -66,34 +173,49 @@ Deck-specific colors are controlled by the body theme class:
 <body class="theme-before-the-blend">
 ```
 
-The global CSS uses custom properties like `--deck-accent`, `--deck-secondary`, `--deck-page-surface`, and `--deck-text-strong` so each deck can feel branded while keeping the same layout and interaction structure.
+Theme variables live in `styles.css`. Add or adjust deck branding there instead of styling individual pages one by one.
 
-When adding a new deck, add a new theme block in `styles.css` instead of styling each page separately.
+Important theme concepts:
+
+- `--green`, `--green-deep`, `--green-mid`, and related variables set the core palette.
+- `--deck-background`, `--deck-surface`, and `--deck-surface-soft` control deck surfaces.
+- Shared layout classes keep pages consistent across products.
+
+## Content Language Rules
+
+Use digital deck wording:
+
+- Prefer "swipe through prompts."
+- Prefer "saved prompts."
+- Prefer "mix prompts" over "shuffle prompts" in user-facing labels.
+- Avoid "pull a card," "draw a card," "deal," or "flip" unless discussing the physical product.
+- Use "card" only when describing the visual card image, code classes, or physical product CTAs.
 
 ## Add A New Deck
 
-1. Create a folder:
+1. Create a new folder:
 
 ```text
 decks/new-deck-name/
 ```
 
-2. Copy the six HTML files from the closest existing deck.
+2. Copy the six HTML page files and `manifest.json` from the closest existing deck.
 
-3. Update each copied file:
+3. Update each copied page:
 
-- Page `<title>`
-- Body class, for example `theme-new-deck-name`
-- Welcome, how-to, symbols, saved, and next-steps copy
-- Logo file only if that deck uses a different approved logo
+- Page `<title>` and meta description.
+- Body theme class.
+- Welcome/how-to/next-steps copy.
+- Logo and app icon paths if needed.
+- Cache version query strings.
 
-4. Add card PNGs to:
+4. Add card PNGs:
 
 ```text
 assets/cards/newdeckfolder/
 ```
 
-5. Add a config block in `deck-configs.js`:
+5. Add a new config in `deck-configs.js`:
 
 ```js
 "new-deck-name": {
@@ -105,15 +227,16 @@ assets/cards/newdeckfolder/
   cardImageFiles: cardFiles("newdeckfolder", [1, 2, 3, 4]),
   cardCategories: {
     "1.png": "Start",
-    "2.png": "Connection",
-    "3.png": "Trust",
-    "4.png": "Growth"
+    "2.png": "Connection"
   },
-  categoryOrder: ["connection", "trust", "growth"],
+  categoryOrder: ["connection"],
   categoryDefinitions: [
-    { name: "Connection", symbol: "Connection", icon: "element5.png", description: "Short description here." },
-    { name: "Trust", symbol: "Trust", icon: "Element 329.png", description: "Short description here." },
-    { name: "Growth", symbol: "Growth", icon: "Element 332.png", description: "Short description here." }
+    {
+      name: "Connection",
+      symbol: "Connection",
+      icon: "element5.png",
+      description: "Short category description."
+    }
   ]
 }
 ```
@@ -127,83 +250,69 @@ assets/cards/newdeckfolder/
 }
 ```
 
-7. Add theme colors in `styles.css`:
+7. Add a theme block in `styles.css`.
 
-```css
-body.theme-new-deck-name {
-  --deck-accent: #000000;
-  --deck-accent-contrast: var(--cream);
-  --deck-secondary: #f7f3e9;
-  --deck-text-strong: var(--charcoal);
-  --deck-page-surface: #f7f5f2;
-  --deck-page-quiet: #f7f5f2;
-}
-```
+8. Test the full flow on phone width and desktop width.
 
-8. Update the cache version on the copied HTML files after CSS or JS changes:
+## Future Digital Application Handoff
+
+This static project can become a full digital application without starting over. A future developer should treat the current files as a working prototype and content map.
+
+Recommended app direction:
+
+- Convert deck pages into reusable screens/components.
+- Convert `deck-configs.js` into JSON, database records, or CMS-managed content.
+- Replace page reload navigation with app routing.
+- Replace `localStorage` saved prompts with authenticated user storage.
+- Replace front-end passwords with secure server-side access.
+- Add account login, purchase validation, or license-based access.
+- Add analytics for deck opens, saved prompts, and completion behavior.
+- Add service worker caching for offline or low-signal use.
+- Improve install flow with a proper PWA install prompt where supported.
+
+Suggested app architecture:
 
 ```text
-brand-cleanup-41 -> brand-cleanup-42
+App
+  Auth / Access
+  Deck Library
+  Deck Home
+  How To
+  Symbol Guide
+  Swipe Prompt Experience
+  Saved Prompts
+  Next Steps
+  Account / Device Install Help
 ```
 
-## Deck Config Rules
+Data models to plan for:
 
-- `productName` appears on the opening card fallback and internal labels.
-- `storageKey` must be unique so saved cards do not mix across decks.
-- `cardImageFiles` controls deck order.
-- `cardCategories` controls filtering, saved categories, and category navigation.
-- `categoryOrder` controls the order of category buttons and cards.
-- `categoryDefinitions` controls the Understanding symbols accordion.
-- `icon` must match a file in `assets/symbols/`.
+- `Deck`: name, slug, theme, icon, manifest info.
+- `Prompt`: deck id, image, category, order, metadata.
+- `Category`: name, slug, symbol, icon, description.
+- `SavedPrompt`: user id, deck id, prompt id, saved date.
+- `AccessGrant`: user id, deck id, purchase/license source.
 
-## User Experience Rules
+Security note for future app:
 
-Keep these consistent across all decks:
-
-- Same six-page flow.
-- Same global header and slide-out navigation.
-- Same saved-card behavior.
-- Same card controls: skip, save, shuffle.
-- Same next-steps CTA structure.
-- Deck-specific color only through theme variables and approved brand assets.
-
-This gives users a familiar flow even when each deck has its own personality.
-
-## Future Digital App Path
-
-The current static setup is intentionally close to an app structure:
-
-- `deck-configs.js` can become JSON or app data.
-- Each HTML page can become a reusable screen/component.
-- `script.js` behavior can become app state and routing.
-- `localStorage` saved prompts can become device storage, account storage, or cloud sync.
-- Password routing should become real authentication before launch.
-
-For a future application, the clean migration path is:
-
-1. Keep `deck-configs.js` as the source of truth.
-2. Move each page type into a reusable component.
-3. Replace page reloads with app routes.
-4. Replace `localStorage` with the app storage strategy.
-5. Replace front-end passwords with server-side access control.
-
-## Important Security Note
-
-The current password system is front-end only. It is useful for a prototype, but it is not secure for paid-content protection because passwords and deck paths are visible in browser code.
-
-Before launch, use server-side authentication such as Shopify customer access, Cloudflare Access, a serverless function, or another protected delivery system.
+The current password system is visible in browser code. For paid or private content, move access checks to a server, membership platform, Shopify customer flow, Cloudflare Access, Supabase auth, Firebase auth, or another secure system.
 
 ## QA Checklist
 
-Test every deck on mobile width and desktop width:
+Test every deck after copy, image, CSS, or JS changes:
 
 - Password opens the correct deck.
-- Header icons and logo match the deck brand.
-- Navigation opens, closes, and highlights the current page.
-- Category filters match the cards shown.
-- Save button toggles saved state.
-- Saved prompts are isolated to the correct deck.
-- Empty saved states are readable and on brand.
-- Next-steps CTAs open the correct links.
-- Text does not overlap artwork or buttons.
-- Background elements are visible but do not compete with content.
+- Loading screen does not overlap on mobile.
+- Header logo and icons match the deck brand.
+- Slide-out navigation opens, closes, and routes correctly.
+- Welcome copy and Home Screen instructions are readable.
+- How-to copy uses digital prompt language.
+- Symbol accordion content matches the deck config.
+- Category filters show the right prompts.
+- Swipe gestures work on mobile.
+- Skip, save, and mix controls work.
+- Saved prompts stay isolated by deck.
+- Empty saved states are readable.
+- Next-step links open correctly.
+- Text does not overlap symbols, buttons, or card artwork.
+- Mobile Safari and Android Chrome layouts both remain usable.
